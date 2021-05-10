@@ -133,7 +133,7 @@ client.on("guildMemberAdd", member => {
 '9': `<a:9x:797157222434078730>`}[d];
         })
       }
-  const kanal = member.guild.channels.cache.find(r => r.id === "838752253120610315"); //kANALID
+  const kanal = member.guild.channels.cache.find(r => r.id === "839975054385086534"); //kANALID
   let user = client.users.cache.get(member.id);
     var hggif = [
         "https://i.pinimg.com/originals/2c/43/ac/2c43acd8c41ee853cf9fbb04960e4fa6.gif",
