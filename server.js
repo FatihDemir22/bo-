@@ -160,4 +160,33 @@ if (kurulus > 1296000000) kontrol = '<a:rainbow:838755853271564358> • Hesap Du
    kanal.send(register)   
   });
 
+
+
+///TAG ALANA ROL///
+client.on("userUpdate", async (oldUser, newUser) => {  
+  if (oldUser.username !== newUser.username) {
+          let tag = ayarlar.tag
+          let sunucu = ayarlar.sunucu
+          let kanal = ayarlar.tagkanal 
+          let rol = ayarlar.tagrol
+
+          
+
+  try {
+
+  if (newUser.username.includes(tag) && !client.guilds.cache.get(sunucu).members.cache.get(newUser.id).roles.cache.has(rol)) {
+  await client.channels.cache.get(kanal).send(new Discord.MessageEmbed().setColor("RED").setDescription(` ${newUser} \`${tag}\` Tagımızı Aldığı İçin <@&${rol}> Rolünü Verdim`));
+  await client.guilds.cache.get(sunucu).members.cache.get(newUser.id).roles.add(rol);  
+  }
+  if (!newUser.username.includes(tag) && client.guilds.cache.get(sunucu).members.cache.get(newUser.id).roles.cache.has(rol)) {
+  await client.channels.cache.get(kanal).send(new Discord.MessageEmbed().setColor("RED").setDescription(` ${newUser} \`${tag}\` Tagımızı Çıkardığı İçin <@&${rol}> Rolünü Aldım`));
+  await client.guilds.cache.get(sunucu).members.cache.get(newUser.id).roles.remove(rol);
+  }  
+} catch (e) {
+console.log(`Bir hata oluştu! ${e}`)
+ }
+}  
+});
+
+
 client.login(ayarlar.token)

@@ -6,6 +6,7 @@ let kayityetkili = 'ID' //Yetkili
 let rolver1 = 'ID' //kadınVerilecek
 let rolver2 = 'ID' //kadınVerilecek2
 let rolal = 'ID' //KayıtsızAlınacak
+let isimön = 'tag' //İsmin önüne gelecek simge,tag 
 
   if(!message.member.roles.cache.has(kayityetkili))
   return message.channel.send(`Bu komutu kullanabilmek için \`Kayıt\` yetkisine sahip olmalısınız.`);
@@ -18,10 +19,10 @@ let rolal = 'ID' //KayıtsızAlınacak
   if (isNaN(yaş)) return message.channel.send('Yaş sadece sayı olarak kabul edilir.')
   let kayıtlımı = await db.fetch(`kayıtlıkişi_${member}`)
   let eskiismi = await db.fetch(`kayıtlıisim_${member}`)  
-  let toplamaisim = ` ${isim} ${yaş}`
+  let toplamaisim = `${isimön} ${isim} ${yaş}`
     
   setTimeout(function(){
-  member.setNickname(` ${isim} | ${yaş}`)
+  member.setNickname(`${isimön} ${isim} | ${yaş}`)
   },1000)
     setTimeout(function(){
   member.roles.add(rolver1)  
