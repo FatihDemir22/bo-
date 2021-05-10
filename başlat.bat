@@ -1,5 +1,5 @@
 echo off
-title Hera register Bot
+title Erdem Çakıroğlu register Bot
 color f
 cls
 :a
